@@ -13,7 +13,7 @@ def process_excel(input_path):
     df = pd.read_excel(input_path, sheet_name="New Data")
 
     # Filter for commercial units
-    df_commercial = df[df['Unit type'] == 'Commercial'].dropna(subset=['Unit Reference', 'Fund type'])
+    df_commercial = df[df['Unit type'].isin(['Commercial', 'Office', 'Retail'])].dropna(subset=['Unit Reference', 'Fund type'])
 
     # Group by Unit and Fund type
     unit_summary = (
